@@ -39,7 +39,7 @@ class Contracts_completed(models.Model):
         ('Transferee', 'Transferee')
     ])
     duties_description = models.TextField()
-    hours = models.CharField(null=True, blank=True)
+    hours = models.CharField(max_length=500, null=True, blank=True)
     
     intern_signature = models.TextField()
     hr_signature = models.TextField()
