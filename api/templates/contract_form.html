@@ -1,0 +1,646 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Contract Form</title>
+    {% load static %}
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/css/intlTelInput.css" />
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center; 
+            max-height: fit-content;
+        }
+
+        
+        h4 {
+            color: #333;
+            text-align: start;
+            font-size: 12px;
+        }
+
+        h3 {
+            color: #333;
+            text-align: center;
+            font-size: 16px;
+        }
+
+        .form-section {
+            border: 0px solid #ddd;
+            border-radius: 10px;
+            padding: 20px;
+            margin-bottom: 25px;
+            background-color: #fff;
+        }
+
+        .form-section h2 {
+            margin-bottom: 15px;
+            color: #0056b3;
+        }
+
+        .form-section label {
+            display: block;
+            text-align: start;
+            margin-bottom: 5px;
+            font-size: 10.8px;
+            color: rgb(128, 121, 98);
+        }
+
+        .form-section input[type="text"],
+        .form-section input[type="email"],
+        .form-section input[type="tel"],
+        .form-section input[type="date"],
+        .form-section textarea {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 15px;
+            border: 0.1px solid #ccc;
+            border-radius: 4px;
+            height: 20px;
+        }
+
+        .form-section textarea {
+            height: 100px;
+            resize: vertical;
+        }
+
+        .signature-section {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 20px;
+        }
+
+        .signature-section div {
+            width: 48%;
+            text-align: start;
+            font-size: 9px;
+        }
+
+        .signature-line {
+            border-bottom: 2px solid #777;
+            width: 100%;
+            height: 60px;
+            position: relative;
+        }
+
+        .signature-line p {
+            position: absolute;
+            top: 13px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 5px;
+            color: #777;
+        }
+
+        .signature-pad {
+            border: none;
+            box-shadow: none;
+            background-color: transparent; 
+            width: 100%;
+            height: 60px;
+        }
+
+
+        button {
+            padding: 10px 20px;
+            font-size: 10px;
+            color: #fff;
+            background-color: #777;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            display: block; 
+            width: 100%; 
+            margin-bottom: 20px; 
+        }
+
+
+        button:hover {
+            background: rgb(204, 171, 65);
+        }
+
+        .main-sec {
+            background-color: #fff;
+            padding: 40px 30px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 15px;
+            max-width: 600px;
+            width: 100%;
+            margin: 100px auto;
+            box-sizing: border-box;
+            text-align: center;
+            overflow-y: auto;
+            max-height: 80vh; 
+            min-height: 600px;
+        }
+
+        .header {
+            width: 100%;
+            padding: 20px;
+            background-color: rgb(204, 171, 65);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: 1000;
+        }
+
+        .first-text {
+            width: 100%;
+            padding: 20px;
+            background-color: #333;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: 1000;
+        }
+
+        .logo {
+            font-size: 11px;
+            color: #fff;
+            text-decoration: none;
+        }
+
+        .logo-image {
+            width: 47px;
+            height: 25px;
+            margin-left: 5px;
+            vertical-align: middle;
+        }
+
+        .navbar {
+            position: absolute;
+            top: 20px;
+            right: 60px;
+        }
+
+        .navbar a {
+            color: #fff;
+            font-size: 11px;
+            font-weight: 500;
+            margin-left: 25px;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .navbar a:hover {
+            color: #ffffff;
+        }
+
+        .last-text-fot {
+            width: 100%;
+            text-align: center;
+            padding: 25px 0;
+            background:rgb(204, 171, 65);
+            font-weight: 300;
+            margin-top: 70px;
+        }
+
+        .wide-form {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+        }
+
+        .wide-form select {
+            width: 100%; 
+            max-width: 300px;
+            height: 27px;
+            border: 1px solid #777; 
+            border-radius: 4px; 
+            
+            padding: 4px;
+            font-size: 10px;
+        }
+
+        form {
+            text-align: left;
+            margin: 0 auto;
+            width: 100%;
+        }
+
+        .wide-field input {
+            width: 100%;
+            max-width: 400px;
+            padding-left: 90px;
+            padding-right: 90px;
+            padding: 10px;
+            font-size: 12px;
+            box-sizing: border-box;
+        }
+
+        .wide-field input {
+            min-width: 300px;
+            min-height: 30px;
+            padding-left: 10px;
+            font-size: 11px;
+        }
+        
+        .iti__country-list .iti__flag-container {
+            display: block;
+        }
+
+        .wide-field input {
+            padding-left: 0px;
+        }
+         
+        .add-more-btn {
+            background-color: #777;
+            width: 25%;
+        }
+
+    </style>
+</head>
+<body>
+    <section>
+        <header class="header">
+            <a href="#" class="logo">Temporaly Employee Agreement</a>
+
+        
+            <nav class="navbar">
+                <a href="{% url 'contract_form'%}" style="--i:1">Home</a>
+                <a href="{% url 'contact'%}" style="--i:2">Contact</a>
+                <a href="https://cranium-invest.co.za/" style="--i:5">About us</a>
+                <a href="{% url 'internship_agreement'%}" style="--i:4" class="active">Connect</a>
+            </nav>
+        </header>
+    </section>
+    
+    <section class="main-sec">
+
+        <p style="font-family: 'Courier New', Courier, monospace; font-size: 10.2px; text-align: start; color: rgb(128, 121, 98);"><i class="fas fa-info-circle" style="font-size: 1em; color: rgb(204, 171, 65);" title="Information"></i>
+            By signing below, you confirm that you have read and understood the terms and conditions outlined in this contract. You acknowledge that this contract constitutes a binding one between you and Cranium Investments Pty Ltd ,regarding any aspect of the contract, please raise them with your supervisor before signing.</p>
+        <p style="font-family: 'Courier New', Courier, monospace; font-size: 10.2px; text-align: start; color: rgb(128, 121, 98);"><i class="fas fa-info-circle" style="font-size: 1em; color: rgb(204, 171, 65);" title="Information"></i>
+            Comply with the organization’s policies, processes and procedures.</p>
+        
+
+    <form method="post">
+        {% csrf_token %}
+        
+
+        <div class="form-section">
+            <h4>Personal Information</h4>
+            <label for="id_name">Full legal Names:</label>
+            {{ form.name }}
+
+            <p style="font-size: 10px; color:#777;">Residential Address</p>
+        
+            <div>
+                <label for="id_street_number_and_name">Street Number and Name</label>
+                {{ form.street_number_and_name }}
+            </div>
+        
+            <div>
+                <label for="id_city">City/Town</label>
+                {{ form.city }}
+            </div>
+        
+            <div>
+                <label for="id_state_or_province">State/Province</label>
+                {{ form.state_or_province }}
+            </div>
+        
+            <div>
+                <label for="id_postal_code">Postal Code/ZIP Code</label>
+                {{ form.postal_code }}
+            </div>
+        
+            <div>
+                <label for="id_country">Country</label>
+                {{ form.country }}
+            </div>
+
+            <div class="wide-field">
+            <label for="id_phone_cell">Mobile Number:</label>
+            {{ form.phone_cell }}
+            </div>
+            <br></br>
+
+            <div class="wide-field">
+            <label for="id_phone_home">Home Number:</label>
+            {{ form.phone_home }}
+            </div>
+            <br></br>
+        
+            <label for="id_email">Email:</label>
+            {{ form.email }}
+        
+            <h4>Institution Details</h4>
+            <label for="id_school">Institution Name:</label>
+            {{ form.school }}
+
+            <div class="wide-field">
+                <label for="id_school_contact_person">Institution Contact Person:</label>
+                {{ form.school_contact_person }}
+            </div>
+            <br>
+            <div class="form-group">
+                <label for="id_school_email">Institution Email:</label>
+                {{ form.school_email }}
+            </div>
+            
+            <div class="wide-field">
+                <label for="id_school_mobile">Institution Mobile:</label>
+                {{ form.school_mobile }}
+            </div>            
+        
+            <h4>organization Details</h4>
+            <div class="wide-form">
+            <label for="id_company_name">Organization Name:</label>
+            {{ form.company_name }}
+            </div>
+            <br><br>
+            <div class="form-group">
+                <label for="id_company_street_number_and_name">Organization Street Number and Name:</label>
+                {{ form.company_street_number_and_name }}
+            </div>
+            
+            <div class="form-group">
+                <label for="id_company_city">Organization City:</label>
+                {{ form.company_city }}
+            </div>
+            
+            <div class="form-group">
+                <label for="id_company_state_or_province">Organization State/Province:</label>
+                {{ form.company_state_or_province }}
+            </div>
+            
+            <div class="form-group">
+                <label for="id_company_postal_code">Organization Postal Code:</label>
+                {{ form.company_postal_code }}
+            </div>
+            
+            <div class="form-group">
+                <label for="id_company_country">Organization Country:</label>
+                {{ form.company_country }}
+            </div>
+
+            <h4>Supervisor Details</h4>
+            <label for="id_intern_supervisor">Supervisor Legal Names:</label>
+            {{ form.intern_supervisor }}
+            
+            <div class="wide-field">
+            <label for="id_supervisor_phone">Supervisor Phone:</label>
+            {{ form.supervisor_phone }}
+            </div>
+            <br></br>
+
+            <label for="id_supervisor_email">Supervisor Email:</label>
+            {{ form.supervisor_email }}
+        
+            <h4>Internship Details</h4>
+            <label for="id_start_date">Start Date:</label>
+            {{ form.start_date }}
+
+            <label for="id_end_date">End Date:</label>
+            {{ form.end_date }}
+           
+            <div class="form-group-s wide-form">
+                <label for="id_intern_title">Candidate Title:</label>
+                {{ form.intern_title }}
+            </div>            
+            <br>
+            <div class="form-group">
+            <label for="id_duties_description">Roles and Duties:</label>
+            {{ form.duties_description }}
+
+            <div id="duties-forms">
+                {{ duty_formset.management_form }}
+                {% for duty_form in duty_formset %}
+                    <div class="duty-form">
+                        {{ duty_form.as_p }}
+                    </div>
+                {% endfor %}
+            </div>
+            
+            <button type="button" id="add-duty-btn" class="add-more-btn">Add More Duties</button>
+            
+
+            </div>
+            <div class="form-group">
+            <label for="id_hours">Working Hours:</label>
+            {{ form.hours }}
+            </div>
+
+            <h4>Signatures</h4>
+            <div class="signature-section">
+
+                <div>
+                    <div class="signature-line">
+                        <canvas id="internSignatureCanvas" class="signature-pad"></canvas>
+                    </div>
+                    <p>Intern Signature</p>
+                </div>
+
+
+                <div>
+                    <div class="signature-line">
+                        <canvas id="hrSignatureCanvas" class="signature-pad"></canvas>
+                    </div>
+                    <p>Legal/HR Practitioner</p>
+                </div>
+            </div>
+            <input type="hidden" name="intern_signature" id="internSignature">
+            <input type="hidden" name="hr_signature" id="hrSignature">
+        </div>
+
+        <button type="submit" onclick="submitForm()">Submit</button>
+    </form>
+    </section>
+    <div class="last-text-fot">
+        <p>This contract is a confidential and legally binding document between the undersigned parties. Any amendments or revisions must be documented and signed by all parties involved. 
+    </p>
+        <p><span class="span-m">&copy; {{ current_year }} Cranium. All rights reserved.</span></p>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/js/intlTelInput.min.js"></script>
+    <script>
+            document.querySelectorAll('.phone-input').forEach(function(input) {
+                const iti = window.intlTelInput(input, {
+                    initialCountry: "auto",
+                    geoIpLookup: function(callback) {
+                        fetch('https://ipinfo.io/json?token=c61f25f3faefc2').then(function(resp) {
+                            return resp.json();
+                        }).then(function(resp) {
+                            const countryCode = (resp && resp.country) ? resp.country : "us";
+                            callback(countryCode);
+                        });
+                    },
+                    utilsScript: "https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/js/utils.js",
+                    preferredCountries: ['za', 'us', 'gb'],
+                    separateDialCode: true,
+                });
+
+                input.addEventListener('countrychange', function() {
+                    const selectedCountryData = iti.getSelectedCountryData();
+                    const phoneNumber = iti.getNumber();
+                    input.value = phoneNumber;
+                });
+
+                input.addEventListener('input', function() {
+                    input.value = iti.getNumber();
+                });
+            });
+
+    </script>
+
+    <script>
+
+        const internCanvas = document.getElementById('internSignatureCanvas');
+        const hrCanvas = document.getElementById('hrSignatureCanvas');
+        const internCtx = internCanvas.getContext('2d');
+        const hrCtx = hrCanvas.getContext('2d');
+
+        let isDrawingIntern = false;
+        let isDrawingHr = false;
+
+
+        internCanvas.addEventListener('mousedown', startDrawingIntern);
+        internCanvas.addEventListener('mouseup', stopDrawingIntern);
+        internCanvas.addEventListener('mousemove', drawIntern);
+
+        hrCanvas.addEventListener('mousedown', startDrawingHr);
+        hrCanvas.addEventListener('mouseup', stopDrawingHr);
+        hrCanvas.addEventListener('mousemove', drawHr);
+
+
+        internCanvas.addEventListener('touchstart', startDrawingIntern);
+        internCanvas.addEventListener('touchend', stopDrawingIntern);
+        internCanvas.addEventListener('touchmove', drawIntern);
+
+        hrCanvas.addEventListener('touchstart', startDrawingHr);
+        hrCanvas.addEventListener('touchend', stopDrawingHr);
+        hrCanvas.addEventListener('touchmove', drawHr);
+
+        function getMousePos(canvas, e) {
+            const rect = canvas.getBoundingClientRect();
+            return {
+                x: e.clientX - rect.left,
+                y: e.clientY - rect.top
+            };
+        }
+
+        function getTouchPos(canvas, e) {
+            const rect = canvas.getBoundingClientRect();
+            return {
+                x: e.touches[0].clientX - rect.left,
+                y: e.touches[0].clientY - rect.top
+            };
+        }
+
+        function startDrawingIntern(e) {
+            e.preventDefault();
+            isDrawingIntern = true;
+            internCtx.beginPath();
+            const pos = e.type.includes('touch') ? getTouchPos(internCanvas, e) : getMousePos(internCanvas, e);
+            internCtx.moveTo(pos.x, pos.y);
+        }
+
+        function stopDrawingIntern() {
+            isDrawingIntern = false;
+            internCtx.closePath();
+        }
+
+        function drawIntern(e) {
+            if (!isDrawingIntern) return;
+            e.preventDefault();
+            const pos = e.type.includes('touch') ? getTouchPos(internCanvas, e) : getMousePos(internCanvas, e);
+            internCtx.lineTo(pos.x, pos.y);
+            internCtx.stroke();
+        }
+
+        function startDrawingHr(e) {
+            e.preventDefault();
+            isDrawingHr = true;
+            hrCtx.beginPath();
+            const pos = e.type.includes('touch') ? getTouchPos(hrCanvas, e) : getMousePos(hrCanvas, e);
+            hrCtx.moveTo(pos.x, pos.y);
+        }
+
+        function stopDrawingHr() {
+            isDrawingHr = false;
+            hrCtx.closePath();
+        }
+
+        function drawHr(e) {
+            if (!isDrawingHr) return;
+            e.preventDefault();
+            const pos = e.type.includes('touch') ? getTouchPos(hrCanvas, e) : getMousePos(hrCanvas, e);
+            hrCtx.lineTo(pos.x, pos.y);
+            hrCtx.stroke();
+        }
+
+        function clearCanvas(canvas, ctx) {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+        }
+
+        function submitForm() {
+            if (internCtx) {
+                document.getElementById('internSignature').value = internCanvas.toDataURL('image/png');
+            }
+            if (hrCtx) {
+                document.getElementById('hrSignature').value = hrCanvas.toDataURL('image/png');
+            }
+        }
+
+        document.getElementById('clearInternSignature').addEventListener('click', function() {
+            clearCanvas(internCanvas, internCtx);
+            document.getElementById('internSignature').value = '';
+        });
+
+        document.getElementById('clearHrSignature').addEventListener('click', function() {
+            clearCanvas(hrCanvas, hrCtx);
+            document.getElementById('hrSignature').value = '';
+        });
+
+    </script>
+
+    <script type="text/javascript">
+        document.addEventListener("DOMContentLoaded", function() {
+            let formIndex = parseInt('{{ duty_formset.total_form_count|safe }}', 10);
+            const dutiesForms = document.getElementById('duties-forms');
+            const addDutyBtn = document.getElementById('add-duty-btn');
+            
+            if (dutiesForms && addDutyBtn) {
+                addDutyBtn.addEventListener('click', function() {
+                    const newForm = dutiesForms.querySelector('.duty-form:last-child').cloneNode(true);
+
+                    const formRegex = RegExp(`duty_formset-(\\d+)-`, 'g');
+                    newForm.innerHTML = newForm.innerHTML.replace(formRegex, `duty_formset-${formIndex}-`);
+                    
+                    newForm.querySelectorAll('input').forEach(input => {
+                        input.value = '';
+                    });
+                    
+                    dutiesForms.appendChild(newForm);
+                    
+                    formIndex++;
+
+                    const totalForms = document.getElementById('id_duty_formset-TOTAL_FORMS');
+                    if (totalForms) {
+                        totalForms.value = formIndex;
+                    }
+                });
+            } else {
+                console.warn('Element with ID "duties-forms" or "add-duty-btn" not found.');
+            }
+        });
+    </script>
+        
+</body>
+</html>

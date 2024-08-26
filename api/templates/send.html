@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>View Contract</title>
+
+    {% load static %}
+</head>
+<body>
+
+<section>
+    <br></br>
+
+    <h4 style="display: inline; border-bottom: 1px dashed #000; padding-bottom: 2px;">Agreement:</h4>
+    <br></br>
+    
+    <p>Candidate Legal Names: {{ contract.name }}</p>
+    <p>Candidate Residential address: {{ contract.street_number_and_name}}</p>
+    <p>Candidate Mobile Number: {{ contract.phone_cell }}</p>
+    <p>Candidate Email: {{ contract.email }}</p>
+    <p>Institution: <b>{{ contract.school }}</b><p>
+    <p>Institution Email: {{ contract.school_email }}</p>
+    <p>Organisation: <b>{{ contract.company_name }}</b></p>
+    <p>Organisation Physical address: {{ contract.company_street_number_and_name }}</p>
+    <p><h4>{{  contract.intern_title }}</h4></p>
+    <h4>{{ contract.start_date }} - {{ contract.end_date }}</h4>
+
+    <p style="color: rgb(51, 51, 51);">
+        <b>This agreement</b>, executed on this date, constitutes a legally binding one between {{ contract.company_name }}, a duly registered entity with its principal place of business at {{ contract.company_street_number_and_name }} {{ contract.company_state_or_province}} (hereinafter referred to as "the Company"), and {{ contract.name }}, residing at {{ contract.street_number_and_name }} (hereinafter referred to as "the Intern"). This agreement formalizes the terms and conditions of the internship, outlining the responsibilities, duties, and obligations of both parties. By signing this contract, both parties affirm their understanding and acceptance of the terms stated herein. This document is enforceable under applicable laws and regulations, ensuring that both the Company and the Intern uphold the agreed-upon standards and responsibilities. Any modifications or disputes related to this contract shall be addressed in accordance with the governing legal framework.
+    </p>
+    <br>
+
+    Intern Supervisor:
+    <p>{{ contract.intern_supervisor }}</p>
+    <p>{{ contract.supervisor_phone }}</p>
+    <p>{{ contract.supervisor_email }}</p>
+
+            <div >
+                {% if contract.intern_signature %}
+                    <img src="{{ contract.intern_signature }}" alt="Intern Signature" class="signature-img" />
+                {% else %}
+                    <p class="signature-placeholder">No Intern Signature</p>
+                {% endif %}
+            </div>
+            <p class="signature-title"><i>Intern Signature</i></p>
+        </div>
+        <div>
+                {% if contract.hr_signature %}
+                    <img src="{{ contract.hr_signature }}" alt="HR Signature" class="signature-img" />
+                {% else %}
+                    <p class="signature-placeholder">No HR Signature</p>
+                {% endif %}
+            <p class="signature-title"><i>Legal/HR Practitioner</i></p>
+        </div>
+
+        <div >
+                {% if contract.supervisor_signature %}
+                    <img src="{{ contract.supervisor_signature }}" alt="Intern Signature" class="signature-img" />
+                {% else %}
+                    <p class="signature-placeholder">Awaiting supervisor signature</p>
+                {% endif %}
+            </div>
+            <p class="signature-title"><i>Supervisor Signature</i></p>
+        </div>
+        
+    </div>
+</section>
+</body>
+</html>

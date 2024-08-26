@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>View Contract</title>
+
+    {% load static %}
+    <style>
+ 
+        body {
+            font-family: "Courier New", Courier, monospace;
+            margin: 0;
+            padding: 20px;
+            background-color: white;
+        }
+
+        h1 {
+            text-align: center;
+            text-transform: uppercase;
+            font-size: 24px;
+            letter-spacing: 2px;
+            margin-bottom: 30px;
+        }
+
+        p {
+            font-size: 12px;
+            margin: 5px 0;
+        }
+
+        .contract-section {
+            background-color: white;
+            padding: 20px;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .contract-section strong {
+            display: inline-block;
+            width: 200px;
+            color: #333;
+        }
+
+    
+        .signature-section {
+            display: flex;
+            margin-top: 30px;
+        }
+
+        .signature-item {
+            width: 10%;
+            text-align: start;
+            margin-right: 50px;
+            }
+            .signature-item-b {
+            width: 10%;
+            margin-left: 70px;
+            text-align: start;
+            }
+
+            .signature-item-c {
+            width: 10%;
+            margin-left: 70px;
+            text-align: center;
+            }
+
+        .signature-line {
+            border-bottom: 0px solid #333;
+            width: 40%;
+            margin: 0 auto;
+            margin-bottom: 10px;
+            position: relative;
+        }
+
+
+        .signature-img {
+            display: block;
+            margin: 0 auto;
+            width: auto;
+            height: 60px;
+        }
+
+        .signature-placeholder {
+            font-size: 12px;
+            color: #777;
+            font-style: italic;
+        }
+
+        .signature-title {
+            margin-top: 10px;
+            font-weight: bold;
+            font-size: 10px;
+        }
+
+        .link {
+            color: rgb(204, 171, 65);
+            font-family:Arial, Helvetica, sans-serif;
+            font-size: 10px;
+            font-weight: bold;
+        }
+        .header {
+            font-family: Arial, sans-serif;
+            width: 100%;
+            padding: 20px;
+            background-color: rgb(204, 171, 65);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: 1000;
+        }
+
+        .first-text {
+            width: 100%;
+            padding: 20px;
+            background-color: #333;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: 1000;
+        }
+
+        .logo {
+            font-size: 11px;
+            color: #fff;
+            text-decoration: none;
+        }
+
+        .logo-image {
+            width: 47px;
+            height: 25px;
+            margin-left: 5px;
+            vertical-align: middle;
+        }
+
+        .navbar {
+            position: absolute;
+            top: 20px;
+            right: 60px;
+        }
+
+        .navbar a {
+            color: #fff;
+            font-size: 14px;
+            font-weight: 500;
+            margin-left: 25px;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .navbar a:hover {
+            color: #ffffff;
+        }
+
+        .last-text-fot {
+            width: 100%;
+            text-align: center;
+            padding: 25px 0;
+            background:rgb(204, 171, 65);
+            font-weight: 300;
+            margin-top: 70px;
+            color: white;
+        }
+
+        .send-button {
+            padding: 10px 20px;
+            font-size: 10px;
+            color: #fff;
+            background-color: rgb(204, 171, 65);
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            display: block; 
+            width: 18%;
+            margin-bottom: 20px;
+        }
+        button:hover {
+            background: #333;
+        }
+
+    </style>
+</head>
+<body>
+
+<section>
+    <br></br>
+    <br></br>
+
+    <h4 style="display: inline; border-bottom: 1px dashed #000; padding-bottom: 2px;">Agreement:</h4>
+    <br></br>
+     
+    <p>
+        <span>{{ contract.name }}</span>
+        <span style="margin-left: 62px;">{{ contract.street_number_and_name}}</span>
+    </p>
+    <p>
+        <span></span>
+        <span style="margin-left: 170px;">{{ contract.phone_cell }}</span>
+    </p>
+    <p>
+        <span></span>
+        <span style="margin-left: 170px;">{{ contract.email }}</span>
+    </p>
+    <br></br>
+    <p>
+        <span></span>
+        <span style="margin-left: 90px;">{{ contract.school }}</span>
+    </p>
+    <p>
+        <span></span>
+        <span style="margin-left: 90px;">Contact person: {{ contract.school_contact_person }}</span>
+    </p>
+    <p>
+        <span></span>
+        <span style="margin-left: 90px;">{{ contract.school_email }}</span>
+    </p>
+    <br>
+
+    <p>
+        <span></span>
+        <span style="margin-left: 90px;">{{ contract.company_name }}</span>
+    </p>
+    <p>
+        <span></span>
+        <span style="margin-left: 90px;">{{ contract.company_street_number_and_name }}</span>
+    </p>
+    <p>
+        <span></span>
+        <span style="margin-left: 90px;">{{  contract.intern_title }}</span>
+    </p>
+    <p>
+        <span></span>
+        <span style="margin-left: 90px;">{{ contract.start_date }} - {{ contract.end_date }}</span>
+    </p>
+    <br>
+    <p style="color: rgb(51, 51, 51);">
+        This agreement, executed on this date, constitutes a legally binding one between {{ contract.company_name }}, a duly registered entity with its principal place of business at {{ contract.company_street_number_and_name }} {{ contract.company_state_or_province}} (hereinafter referred to as "the Company"), and {{ contract.name }}, residing at {{ contract.street_number_and_name }} (hereinafter referred to as "the Intern"). This agreement formalizes the terms and conditions of the internship, outlining the responsibilities, duties, and obligations of both parties. By signing this contract, both parties affirm their understanding and acceptance of the terms stated herein. This document is enforceable under applicable laws and regulations, ensuring that both the Company and the Intern uphold the agreed-upon standards and responsibilities. Any modifications or disputes related to this contract shall be addressed in accordance with the governing legal framework.
+    </p>
+    <br>
+
+    <p style="display: inline; border-bottom: 1px dashed #000; padding-bottom: 2px;">Intern Supervisor:</p>
+    
+    <br></br>
+
+        <p> {{ contract.intern_supervisor }}</p>
+        <p>{{ contract.supervisor_phone }}</p>
+        <p>{{ contract.supervisor_email }}</p>
+
+    <div class="signature-section">
+        <div class="signature-item">
+            <div class="signature-line">
+                {% if contract.intern_signature %}
+                    <img src="{{ contract.intern_signature }}" alt="Intern Signature" class="signature-img" />
+                {% else %}
+                    <p class="signature-placeholder">No Intern Signature</p>
+                {% endif %}
+            </div>
+            <p class="signature-title"><i>Intern Signature</i></p>
+        </div>
+    
+        <div class="signature-item-b">
+            <div class="signature-line">
+                {% if contract.hr_signature %}
+                    <img src="{{ contract.hr_signature }}" alt="HR Signature" class="signature-img" />
+                {% else %}
+                    <p class="signature-placeholder">No HR Signature</p>
+                {% endif %}
+            </div>
+            <p class="signature-title"><i>Legal/HR practitionar</i></p>
+            <br><br>
+        </div>
+
+        <div class="signature-item-c">
+            <div class="signature-line">
+                {% if contract.supervisor_signature %}
+                    <img src="{{ contract.supervisor_signature }}" alt="Intern Signature" class="signature-img" />
+                {% else %}
+                    <p class="signature-placeholder">Awaiting supervisor signature</p>
+                {% endif %}
+            </div>
+            <p class="signature-title"><i>Supervisor Signature</i></p>
+        </div>
+        
+    </div>
+</section>
+</body>
+</html>

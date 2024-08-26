@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Internship Agreement - What You Should Know</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f8f9fa;
+            padding: 20px;
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+            margin-bottom: 10px;
+            font-size: 17px;
+            font-family: 'Arial', sans-serif;
+        }
+
+        h2 {
+            color: #333;
+            font-size: 11px;
+            margin-top: 20px;
+            font-family: 'Arial', sans-serif;
+        }
+
+        p {
+            margin: 10px 0;
+            font-size: 1.1em;
+        }
+
+        .container {
+            background-color: #ffffff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            max-width: 800px;
+            margin: auto;
+        }
+
+        .section {
+            margin-bottom: 20px;
+            font-family: "Courier New", Courier, monospace;
+            font-size: 12px;
+        }
+
+        ul {
+            margin: 10px 0;
+            padding-left: 20px;
+        }
+
+        ul li {
+            margin-bottom: 10px;
+        }
+
+        .footer {
+            text-align: center;
+            margin-top: 30px;
+            color: #6c757d;
+        }
+
+        .header {
+            width: 100%;
+            padding: 20px;
+            background-color: rgb(204, 171, 65);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: 1000;
+        }
+
+        .first-text {
+            width: 100%;
+            padding: 20px;
+            background-color: #333;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: 1000;
+        }
+
+        .logo {
+            font-size: 11px;
+            color: #fff;
+            text-decoration: none;
+        }
+
+        .logo-image {
+            width: 47px;
+            height: 25px;
+            margin-left: 5px;
+            vertical-align: middle;
+        }
+
+        .navbar {
+            position: absolute;
+            top: 20px;
+            right: 60px;
+        }
+
+        .navbar a {
+            color: #fff;
+            font-size: 14px;
+            font-weight: 500;
+            margin-left: 25px;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .navbar a:hover {
+            color: #ffffff;
+        }
+
+        .last-text-fot {
+            width: 100%;
+            text-align: center;
+            padding: 25px 0;
+            background:rgb(204, 171, 65);
+            font-weight: 300;
+            margin-top: 70px;
+        }
+
+        .actions button {
+            padding: 10px 20px;
+            background-color: rgb(204, 171, 65);
+            border: none;
+            color: #fff;
+            font-size: 11px;
+            cursor: pointer;
+            border-radius: 5px;
+            margin-top: 20px;
+        }
+
+        .actions button:disabled {
+            background-color: #ccc;
+            cursor: not-allowed;
+        }
+
+        .actions a {
+            color: white;
+            text-decoration: none;
+        }
+
+        
+    </style>
+</head>
+<body>
+
+    <section>
+        <header class="header">
+            <a href="#" class="logo">Temporaly Employee Agreement</a>
+
+        
+            <nav class="navbar">
+                <a href="{% url 'contract_form'%}" style="--i:1">Home</a>
+                <a href="{% url 'contact'%}" style="--i:2">Contact</a>
+                <a href="https://cranium-invest.co.za/" style="--i:5">About us</a>
+                <a href="{% url 'internship_agreement'%}" style="--i:4" class="active">Connect</a>
+            </nav>
+        </header>
+    </section>
+    <div class="container">
+        <br></br>
+        <h1>Agreement overview</h1>
+
+        <div class="section">
+            <h2>The Canditate agrees to:</h2>
+            <ul>
+                <li>Abide by the organization's policies and procedures</li>
+                <li>Observe guidelines for appropriate dress, conduct, communication, and maintaining the workspace</li>
+                <li>Complete any required training(studies) before the internship starts</li>
+                <li>Attend the internship site during scheduled work dates/times, notifying the supervisor of absence or late arrival with sufficient notice prior to start time;</li>
+                <li>Fulfill institution requirements to receive academic credit (if applicable)</li>
+                <li>Complete tasks promptly and to a satisfactory standard </li>
+                <li>Inform the  supervisor of any problems or concerns.</li>
+            </ul>
+        </div>
+
+        <div class="section">
+            <h2>The Supervisor and Organization Agree to:</h2>
+            <ul>
+                <li>Comply with the SA Department of Labor policies on paid/unpaid internships;</li>
+                <li>Adhere to all labor laws;</li>
+                <li>Provide a safe work environment;</li>
+                <li>Conduct appropriate training for the candidate prior to the internship;</li>
+                <li>Assign a mentor for the candidate;</li>
+                <li>Establish a set work schedule and lesson plan for the candidate;</li>
+                <li>Provide the candiadate with periodic feedback and constructive criticism;</li>
+                <li>Ensure the candidate learning goals are addressed;</li>
+                <li>Meet Institution requirements for the student to receive academic credit (if applicable); and</li>
+                <li>Compensate the candidate according to the agreed-upon rate or arrangement.</li>
+            </ul>
+        </div>
+
+        <div class="actions">
+            <input type="checkbox" id="agreeCheckbox">
+            <label for="agreeCheckbox">I agree to the terms and conditions</label>
+            <br>
+            <button id="proceedButton" disabled>
+                <a href="{% url 'contract_form'%}">Proceed</a>
+            </button>
+        </div>
+    </div>
+
+    <div class="footer">
+        <p>&copy; 2024 Internship Agreement. All Rights Reserved.</p>
+    </div>
+
+    <script>
+        const checkbox = document.getElementById('agreeCheckbox');
+        const proceedButton = document.getElementById('proceedButton');
+
+        checkbox.addEventListener('change', function() {
+            proceedButton.disabled = !checkbox.checked;
+        });
+    </script>
+
+</body>
+</html>
